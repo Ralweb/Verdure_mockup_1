@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#eae7dc">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="30" fill="#dcd6b9" stroke="#8f8760" stroke-width="2"/>
+    <text x="50" y="55" font-family="serif" font-style="italic" font-size="10" fill="#2b2b28" text-anchor="middle">Verdure</text>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #eae7dc; }
+  </style>
+</helmet>
+
+<div style="display:flex; flex-direction:column; align-items:center; gap:64px; padding:64px 40px 120px; font-family:'Jost',sans-serif;">
+
+  <div style="text-align:center; max-width:760px; display:flex; flex-direction:column; gap:10px;">
+    
+    <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:600; font-size:38px; color:#2b2b28;">Verdure — mockup 1 Ralweb</div>
+    <div style="font-size:15px; color:#7a7a70; line-height:1.5;">Render statico basato sul catalogo inoltrato</div>
+  </div>
+
+  <!-- ============ HOMEPAGE DESKTOP ============ -->
+  <div style="display:flex; flex-direction:column; align-items:center; gap:18px;" data-screen-label="Homepage — Desktop">
+    <div style="font-family:'Jost',sans-serif; letter-spacing:2px; font-size:14px; color:#2b2b28; font-weight:500;">HOMEPAGE — DESKTOP</div>
+    <x-import component-from-global-scope="ChromeWindow" from="./browser-window.jsx" width="{{1440}}" height="auto" url="verdure-lighting.com" hint-size="1440,920">
+
+      <div style="width:1440px; font-family:'Jost',sans-serif; background:#fbfaf6;">
+
+        <!-- header -->
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:28px 56px;">
+          <div style="width:110px;"></div>
+          <div style="text-align:center;">
+            <div style="font-family:'Jost',sans-serif; letter-spacing:8px; font-size:20px; color:#6b6a5f; font-weight:500;">VERDURE</div>
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:11px; color:#a39a72; letter-spacing:1px;">notonlydesign</div>
+          </div>
+          <div style="padding:11px 22px; border:1px solid #d8d4c2; font-size:11px; letter-spacing:1.5px; color:#6b6a5f;">CONTATTACI</div>
+        </div>
+        <div style="display:flex; justify-content:center; gap:48px; padding-bottom:24px; font-size:12px; letter-spacing:2px; color:#8f8d7e;">
+          <span>PRODOTTI</span><span>COLLEZIONI</span><span>PROGETTI</span><span>STUDIO</span>
+        </div>
+
+        <!-- hero -->
+        <div style="display:flex; padding:0 56px 80px; gap:56px; align-items:center;">
+          <div style="width:52%;">
+            <img src="assets/hero-pendant.png" style="width:100%; height:560px; object-fit:cover; border-radius:18px;">
+          </div>
+          <div style="width:48%; background:#dcd6b9; border-radius:18px; height:560px; display:flex; flex-direction:column; justify-content:center; padding:0 56px; gap:22px;">
+            <div style="font-size:12px; letter-spacing:2.5px; color:#7a7458; font-weight:600;">SUSPENDED LIGHT COLLECTION</div>
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:600; font-size:42px; line-height:1.25; color:#2b2b28;">Non solo design.<br>Luce che racconta<br>uno spazio.</div>
+            <div style="font-size:14px; line-height:1.7; color:#5c5a4e; max-width:380px;">Megadot, Superdot e Wiredot nascono dall'incontro tra materia, natura e progetto. Ogni sospensione è pensata per accompagnare l'architettura, non sovrastarla.</div>
+            <div style="font-size:13px; letter-spacing:1px; color:#2b2b28; font-weight:600; border-bottom:1px solid #2b2b28; align-self:flex-start; padding-bottom:3px;">Scopri la collezione →</div>
+          </div>
+        </div>
+
+        <!-- editorial band -->
+        <div style="display:flex; gap:56px; padding:0 56px 88px; align-items:center;">
+          <div style="width:38%;">
+            <img src="assets/leaf-texture.png" style="width:100%; height:340px; object-fit:cover; border-radius:50%;">
+          </div>
+          <div style="width:62%; display:flex; flex-direction:column; gap:18px;">
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:28px; color:#2b2b28; line-height:1.4;">"La luce, come una foglia, vive di venature sottili: la nostra ricerca segue la stessa logica della natura."</div>
+            <div style="font-size:12px; letter-spacing:2px; color:#8f8d7e;">— VERDURE STUDIO</div>
+          </div>
+        </div>
+
+        <!-- product showcase -->
+        <div style="background:#e5e1d1; padding:72px 56px; display:flex; flex-direction:column; gap:44px; align-items:center;">
+          <div style="text-align:center; display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:12px; letter-spacing:2.5px; color:#7a7458; font-weight:600;">LA COLLEZIONE</div>
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:600; font-size:34px; color:#2b2b28;">Suspended Light</div>
+          </div>
+          <div style="display:flex; gap:64px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+              <img src="assets/megadot.png" style="width:190px; height:190px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;">
+              <div style="font-size:14px; letter-spacing:2px; color:#2b2b28; font-weight:500;">MEGADOT</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+              <img src="assets/superdot.png" style="width:190px; height:190px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;">
+              <div style="font-size:14px; letter-spacing:2px; color:#2b2b28; font-weight:500;">SUPERDOT</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+              <img src="assets/wiredot.png" style="width:190px; height:190px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;">
+              <div style="font-size:14px; letter-spacing:2px; color:#2b2b28; font-weight:500;">WIREDOT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- footer -->
+        <div style="padding:56px; display:flex; flex-direction:column; align-items:center; gap:24px; background:#fbfaf6;">
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:22px; color:#6b6a5f;">Verdure — notonlydesign</div>
+          <div style="display:flex; gap:40px; font-size:12px; letter-spacing:1.5px; color:#8f8d7e;">
+            <span>PRODOTTI</span><span>STUDIO</span><span>PROGETTI</span><span>CONTATTI</span>
+          </div>
+          <div style="font-size:11px; color:#a8a696; margin-top:16px;">© 2026 Verdure — notonlydesign. Tutti i diritti riservati.</div>
+        </div>
+
+      </div>
+    </x-import>
+  </div>
+
+  <!-- ============ HOMEPAGE MOBILE ============ -->
+  <div style="display:flex; flex-direction:column; align-items:center; gap:18px;" data-screen-label="Homepage — Mobile">
+    <div style="font-family:'Jost',sans-serif; letter-spacing:2px; font-size:14px; color:#2b2b28; font-weight:500;">HOMEPAGE — MOBILE</div>
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{402}}" height="auto" hint-size="402,874">
+      <div style="font-family:'Jost',sans-serif; background:#fbfaf6;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:2px; padding:14px 20px 18px;">
+          <div style="font-family:'Jost',sans-serif; letter-spacing:5px; font-size:15px; color:#6b6a5f; font-weight:500;">VERDURE</div>
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:9px; color:#a39a72;">notonlydesign</div>
+        </div>
+        <div style="padding:0 20px 20px;">
+          <img src="assets/hero-pendant.png" style="width:100%; height:280px; object-fit:cover; border-radius:14px;">
+        </div>
+        <div style="background:#dcd6b9; margin:0 20px; border-radius:14px; padding:28px 24px; display:flex; flex-direction:column; gap:14px;">
+          <div style="font-size:10px; letter-spacing:2px; color:#7a7458; font-weight:600;">SUSPENDED LIGHT</div>
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:600; font-size:24px; line-height:1.3; color:#2b2b28;">Non solo design. Luce che racconta uno spazio.</div>
+          <div style="font-size:12px; line-height:1.6; color:#5c5a4e;">Megadot, Superdot e Wiredot: la luce che accompagna l'architettura.</div>
+          <div style="font-size:12px; font-weight:600; color:#2b2b28; border-bottom:1px solid #2b2b28; align-self:flex-start;">Scopri la collezione →</div>
+        </div>
+        <div style="padding:32px 20px; display:flex; gap:20px; align-items:center;">
+          <img src="assets/leaf-texture.png" style="width:110px; height:110px; object-fit:cover; border-radius:50%; flex-shrink:0;">
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:15px; color:#2b2b28; line-height:1.4;">"La luce, come una foglia, vive di venature sottili."</div>
+        </div>
+        <div style="background:#e5e1d1; padding:32px 20px; display:flex; flex-direction:column; gap:24px; align-items:center;">
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:600; font-size:22px; color:#2b2b28;">Suspended Light</div>
+          <div style="display:flex; gap:20px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:10px;"><img src="assets/megadot.png" style="width:100px; height:100px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;"><div style="font-size:11px; letter-spacing:1.5px;">MEGADOT</div></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:10px;"><img src="assets/superdot.png" style="width:100px; height:100px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;"><div style="font-size:11px; letter-spacing:1.5px;">SUPERDOT</div></div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:10px;"><img src="assets/wiredot.png" style="width:100px; height:100px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;"><div style="font-size:11px; letter-spacing:1.5px;">WIREDOT</div></div>
+        </div>
+        <div style="padding:28px 20px; display:flex; flex-direction:column; align-items:center; gap:16px;">
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:17px; color:#6b6a5f;">Verdure — notonlydesign</div>
+          <div style="font-size:10px; color:#a8a696;">© 2026 Verdure — notonlydesign</div>
+        </div>
+      </div>
+    </x-import>
+  </div>
+
+  <!-- ============ PRODOTTO DESKTOP ============ -->
+  <div style="display:flex; flex-direction:column; align-items:center; gap:18px;" data-screen-label="Prodotto — Desktop">
+    <div style="font-family:'Jost',sans-serif; letter-spacing:2px; font-size:14px; color:#2b2b28; font-weight:500;">PAGINA PRODOTTO — DESKTOP</div>
+    <x-import component-from-global-scope="ChromeWindow" from="./browser-window.jsx" width="{{1440}}" height="auto" url="verdure-lighting.com/prodotti/wiredot" hint-size="1440,920">
+      <div style="width:1440px; font-family:'Jost',sans-serif; background:#fbfaf6;">
+
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:28px 56px;">
+          <div style="width:110px;"></div>
+          <div style="text-align:center;">
+            <div style="font-family:'Jost',sans-serif; letter-spacing:8px; font-size:20px; color:#6b6a5f; font-weight:500;">VERDURE</div>
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:11px; color:#a39a72; letter-spacing:1px;">notonlydesign</div>
+          </div>
+          <div style="padding:11px 22px; border:1px solid #d8d4c2; font-size:11px; letter-spacing:1.5px; color:#6b6a5f;">CONTATTACI</div>
+        </div>
+
+        <div style="padding:0 56px; font-family:'Playfair Display',serif; font-style:italic; font-size:13px; color:#a39a72;">Home / Suspended Light / Wiredot</div>
+
+        <div style="display:flex; gap:64px; padding:28px 56px 80px;">
+          <div style="width:46%; display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#e5e1d1; border-radius:20px; height:540px; display:flex; align-items:center; justify-content:center;">
+              <img src="assets/wiredot.png" style="width:340px; height:340px; object-fit:cover; border-radius:50%;">
+            </div>
+            <div style="display:flex; gap:14px; justify-content:center;">
+              <div style="width:10px; height:10px; border-radius:50%; background:#2b2b28;"></div>
+              <div style="width:10px; height:10px; border-radius:50%; background:#d3cdb4;"></div>
+              <div style="width:10px; height:10px; border-radius:50%; background:#d3cdb4;"></div>
+            </div>
+          </div>
+
+          <div style="width:54%; display:flex; flex-direction:column; gap:20px; justify-content:center;">
+            <div style="font-size:12px; letter-spacing:2.5px; color:#7a7458; font-weight:600;">SUSPENDED LIGHT COLLECTION</div>
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:600; font-size:52px; color:#2b2b28; line-height:1.1;">Wiredot</div>
+            <div style="font-size:14px; color:#5c5a4e; line-height:1.75; max-width:460px;">Un anello sospeso wireless, con proiettori orientabili che disegnano la luce nello spazio con leggerezza. Pensato per living e ambienti contract di rappresentanza.</div>
+
+            <div style="display:flex; flex-direction:column; gap:10px; margin-top:6px;">
+              <div style="font-size:12px; letter-spacing:1.5px; color:#7a7458;">FINITURA</div>
+              <div style="display:flex; gap:12px;">
+                <div style="width:28px; height:28px; border-radius:50%; background:#2b2b28; border:2px solid #a39a72;"></div>
+                <div style="width:28px; height:28px; border-radius:50%; background:#e9e6da;"></div>
+                <div style="width:28px; height:28px; border-radius:50%; background:#8a6f4f;"></div>
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; margin-top:12px; border-top:1px solid #e3dfd0;">
+              <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid #e3dfd0; font-size:13px;"><span style="color:#8f8d7e;">Diametro anello</span><span style="color:#2b2b28;">Su richiesta progetto</span></div>
+              <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid #e3dfd0; font-size:13px;"><span style="color:#8f8d7e;">Sorgente</span><span style="color:#2b2b28;">LED integrato</span></div>
+              <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid #e3dfd0; font-size:13px;"><span style="color:#8f8d7e;">Dimmerabile</span><span style="color:#2b2b28;">Sì</span></div>
+            </div>
+
+            <div style="display:flex; gap:18px; align-items:center; margin-top:18px;">
+              <div style="padding:15px 30px; border:1px solid #2b2b28; color:#2b2b28; font-size:12px; letter-spacing:1.5px; border-radius:30px;">RICHIEDI INFORMAZIONI</div>
+              <div style="font-size:12px; letter-spacing:1px; color:#7a7458; border-bottom:1px solid #7a7458;">Scarica scheda tecnica</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:0 56px 80px; display:flex; flex-direction:column; gap:32px; align-items:center;">
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:600; font-size:28px; color:#2b2b28;">Ti potrebbe piacere anche</div>
+          <div style="display:flex; gap:56px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:12px;"><img src="assets/megadot.png" style="width:150px; height:150px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;"><div style="font-size:13px; letter-spacing:1.5px;">MEGADOT</div></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:12px;"><img src="assets/superdot.png" style="width:150px; height:150px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;"><div style="font-size:13px; letter-spacing:1.5px;">SUPERDOT</div></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:12px;"><img src="assets/comma.png" style="width:150px; height:150px; object-fit:cover; border-radius:50%; border:1px solid #cfc9ac;"><div style="font-size:13px; letter-spacing:1.5px;">COMMA</div></div>
+          </div>
+        </div>
+
+        <div style="padding:28px 56px; text-align:center; font-size:11px; color:#a8a696;">© 2026 Verdure — notonlydesign. Tutti i diritti riservati.</div>
+      </div>
+    </x-import>
+  </div>
+
+  <!-- ============ PRODOTTO MOBILE ============ -->
+  <div style="display:flex; flex-direction:column; align-items:center; gap:18px;" data-screen-label="Prodotto — Mobile">
+    <div style="font-family:'Jost',sans-serif; letter-spacing:2px; font-size:14px; color:#2b2b28; font-weight:500;">PAGINA PRODOTTO — MOBILE</div>
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{402}}" height="auto" hint-size="402,874">
+      <div style="font-family:'Jost',sans-serif; background:#fbfaf6; padding-bottom:90px; position:relative; min-height:100%;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:2px; padding:14px 20px 12px;">
+          <div style="font-family:'Jost',sans-serif; letter-spacing:5px; font-size:14px; color:#6b6a5f; font-weight:500;">VERDURE</div>
+        </div>
+        <div style="padding:0 20px 12px; font-family:'Playfair Display',serif; font-style:italic; font-size:11px; color:#a39a72;">Home / Suspended / Wiredot</div>
+        <div style="background:#e5e1d1; margin:0 20px; border-radius:16px; height:290px; display:flex; align-items:center; justify-content:center;">
+          <img src="assets/wiredot.png" style="width:200px; height:200px; object-fit:cover; border-radius:50%;">
+        </div>
+        <div style="padding:20px; display:flex; flex-direction:column; gap:14px;">
+          <div style="font-size:10px; letter-spacing:2px; color:#7a7458; font-weight:600;">SUSPENDED LIGHT</div>
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:600; font-size:36px; color:#2b2b28; line-height:1.1;">Wiredot</div>
+          <div style="font-size:13px; color:#5c5a4e; line-height:1.6;">Anello sospeso wireless con proiettori orientabili, per living e spazi contract.</div>
+          <div style="display:flex; gap:10px; margin-top:2px;">
+            <div style="width:24px; height:24px; border-radius:50%; background:#2b2b28; border:2px solid #a39a72;"></div>
+            <div style="width:24px; height:24px; border-radius:50%; background:#e9e6da;"></div>
+            <div style="width:24px; height:24px; border-radius:50%; background:#8a6f4f;"></div>
+          </div>
+          <div style="display:flex; flex-direction:column; border-top:1px solid #e3dfd0; margin-top:6px;">
+            <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #e3dfd0; font-size:12px;"><span style="color:#8f8d7e;">Diametro</span><span>Su richiesta</span></div>
+            <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #e3dfd0; font-size:12px;"><span style="color:#8f8d7e;">Sorgente</span><span>LED integrato</span></div>
+            <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #e3dfd0; font-size:12px;"><span style="color:#8f8d7e;">Dimmerabile</span><span>Sì</span></div>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:16px 20px; background:#fbfaf6; border-top:1px solid #e3dfd0;">
+          <div style="padding:14px; border:1px solid #2b2b28; color:#2b2b28; font-size:12px; text-align:center; letter-spacing:1px; border-radius:30px;">RICHIEDI INFORMAZIONI</div>
+        </div>
+      </div>
+    </x-import>
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>
