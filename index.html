@@ -6,11 +6,12 @@
   <title>Verdure Mockup | Ralweb</title>
   <style>
     :root {
-      --bg: #070707;
-      --text: #f4f4f0;
-      --muted: #9b9b92;
-      --line: rgba(255,255,255,.14);
-      --accent: #0b73a8;
+      --bg: #f6f6f3;
+      --surface: #ffffff;
+      --text: #111111;
+      --muted: #6b6b6b;
+      --line: #d8d8d8;
+      --accent: #2457ff;
     }
 
     * { box-sizing: border-box; }
@@ -19,7 +20,7 @@
       margin: 0;
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top right, rgba(214,255,63,.18), transparent 30%), var(--bg);
+      background: var(--bg);
       color: var(--text);
       display: flex;
       align-items: center;
@@ -42,9 +43,13 @@
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -1px;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .logo span {
+      color: var(--accent);
     }
 
     .tag {
@@ -86,7 +91,7 @@
       border-radius: 28px;
       padding: 32px;
       min-height: 220px;
-      background: rgba(255,255,255,.04);
+      background: var(--surface);
       transition: .25s ease;
       display: flex;
       flex-direction: column;
@@ -96,7 +101,7 @@
     .card:hover {
       transform: translateY(-6px);
       border-color: var(--accent);
-      background: rgba(11, 115, 168);
+      box-shadow: 0 20px 60px rgba(0,0,0,.08);
     }
 
     .number {
@@ -123,28 +128,48 @@
     .arrow {
       margin-top: 36px;
       font-size: 28px;
+      color: var(--text);
+      transition: .25s ease;
+    }
+
+    .card:hover .arrow {
       color: var(--accent);
     }
 
     footer {
       margin-top: 56px;
-      color: var(--muted);
+      color: #8d8d8d;
       font-size: 14px;
       border-top: 1px solid var(--line);
       padding-top: 24px;
     }
 
     @media (max-width: 760px) {
-      .top { margin-bottom: 48px; }
-      .cards { grid-template-columns: 1fr; }
-      h1 { letter-spacing: -3px; }
+      body {
+        padding: 24px;
+      }
+
+      .top {
+        margin-bottom: 48px;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
     }
   </style>
 </head>
+
 <body>
   <main>
     <div class="top">
-      <div class="logo">Ralweb</div>
+      <div class="logo">Ralweb<span>.</span></div>
       <div class="tag">Surfin' code</div>
     </div>
 
@@ -159,7 +184,7 @@
         <div>
           <div class="number">Proposta 01</div>
           <h2>Mockup Ralweb<br>Tema A - Verdure Minimal</h2>
-          <p>Una proposta più minimal, di design ed elegante</p>
+          <p>Una proposta più semplice, minimal e elegante.</p>
         </div>
         <div class="arrow">→</div>
       </a>
@@ -168,7 +193,7 @@
         <div>
           <div class="number">Proposta 02</div>
           <h2>Mockup Ralweb<br>Tema B - Verdure Dinamico</h2>
-          <p>Una proposta più dinamica, moderna e premium</p>
+          <p>Una proposta più dinamica, moderna e digitale.</p>
         </div>
         <div class="arrow">→</div>
       </a>
