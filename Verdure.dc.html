@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #F5F3EA; color: #23271C; -webkit-font-smoothing: antialiased; }
+    a { color: #6E7257; text-decoration: none; }
+    a:hover { color: #23271C; }
+    ::selection { background: #D8D5BD; }
+    @keyframes vd-sway { from { transform: rotate(-4deg) translateX(0); } to { transform: rotate(4deg) translateX(16px); } }
+    @keyframes vd-sway2 { from { transform: rotate(3deg) translateY(0); } to { transform: rotate(-3deg) translateY(14px); } }
+    @keyframes vd-ring { to { transform: rotate(360deg); } }
+    @keyframes vd-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes vd-cue { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(8px); opacity: 1; } }
+  </style>
+</helmet>
+
+<div style="font-family: 'Jost', sans-serif; font-weight: 300; background: #F5F3EA; color: #23271C; min-height: 100vh; overflow-x: hidden;">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px clamp(20px, 4vw, 48px); flex-wrap: wrap; row-gap: 10px; background: rgba(245,243,234,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(35,39,28,0.08);">
+    <div onClick="{{ vaiHome }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 1px;">
+      <span style="font-weight: 600; letter-spacing: 0.42em; font-size: 17px; color: #23271C;">VERDURE</span>
+      <span style="letter-spacing: 0.34em; font-size: 9px; color: #A6A277; text-transform: lowercase;">notonlydesign</span>
+    </div>
+    <nav style="display: flex; align-items: center; gap: clamp(14px, 3vw, 36px); flex-wrap: wrap;">
+      <span onClick="{{ vaiHome }}" style="{{ stileNavHome }}" style-hover="color: #23271C;">Home</span>
+      <span onClick="{{ vaiCatalogo }}" style="{{ stileNavCatalogo }}" style-hover="color: #23271C;">Catalogo</span>
+      <span onClick="{{ vaiB2B }}" style="{{ stileNavB2B }}" style-hover="color: #23271C;">Professional</span>
+      <div style="display: flex; align-items: center; gap: 8px; padding: 8px 18px; border: 1px solid rgba(35,39,28,0.25); border-radius: 999px; cursor: pointer; transition: all .35s ease;" style-hover="background: #23271C; color: #F5F3EA;">
+        <span style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;">Carrello</span>
+        <span style="{{ stileBadgeCarrello }}">{{ carrello }}</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <main data-screen-label="Home">
+
+      <!-- HERO -->
+      <section data-screen-label="Hero" style="position: relative; min-height: 100vh; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); align-items: center; gap: 48px; padding: 140px clamp(20px, 5vw, 72px) 90px clamp(20px, 5vw, 72px); box-sizing: border-box;">
+        <!-- ombre botaniche -->
+        <div data-parallax="0.05" style="position: absolute; top: -60px; left: 32%; width: 420px; height: 420px; pointer-events: none; filter: blur(30px); opacity: 0.3; animation: vd-sway 16s ease-in-out infinite alternate;">
+          <div style="position: absolute; top: 0; left: 60px; width: 200px; height: 90px; background: #6E7257; border-radius: 0 100% 0 100%; transform: rotate(-24deg);"></div>
+          <div style="position: absolute; top: 90px; left: 0; width: 240px; height: 100px; background: #6E7257; border-radius: 100% 0 100% 0; transform: rotate(12deg);"></div>
+          <div style="position: absolute; top: 170px; left: 130px; width: 180px; height: 80px; background: #6E7257; border-radius: 0 100% 0 100%; transform: rotate(-8deg);"></div>
+        </div>
+        <div data-parallax="0.1" style="position: absolute; bottom: 40px; left: -80px; width: 360px; height: 360px; pointer-events: none; filter: blur(34px); opacity: 0.22; animation: vd-sway2 19s ease-in-out infinite alternate;">
+          <div style="position: absolute; top: 20px; left: 40px; width: 240px; height: 110px; background: #A6A277; border-radius: 100% 0 100% 0; transform: rotate(18deg);"></div>
+          <div style="position: absolute; top: 150px; left: 90px; width: 200px; height: 90px; background: #6E7257; border-radius: 0 100% 0 100%; transform: rotate(-14deg);"></div>
+        </div>
+
+        <div style="position: relative; z-index: 2; max-width: 620px;">
+          <div data-reveal style="display: flex; align-items: center; gap: 14px; margin-bottom: 28px;">
+            <span style="width: 44px; height: 1px; background: #A6A277;"></span>
+            <span style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #6E7257;">Lampade &amp; arredo di design</span>
+          </div>
+          <h1 data-reveal data-reveal-delay="120" style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(52px, 8vw, 84px); line-height: 1.02; margin: 0 0 30px 0; letter-spacing: -0.01em;">La luce,<br>coltivata <em style="font-style: italic; color: #6E7257;">con cura</em>.</h1>
+          <p data-reveal data-reveal-delay="240" style="font-size: 17px; line-height: 1.75; color: rgba(35,39,28,0.72); max-width: 440px; margin: 0 0 40px 0;">Collezioni essenziali di illuminazione e arredo, disegnate dove il rigore del metallo incontra la calma del verde.</p>
+          <div data-reveal data-reveal-delay="360" style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+            <button onClick="{{ vaiCatalogo }}" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; padding: 17px 36px; background: #23271C; color: #F5F3EA; border: 1px solid #23271C; border-radius: 999px; cursor: pointer; transition: all .4s ease;" style-hover="background: #6E7257; border-color: #6E7257; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(35,39,28,0.22);" style-active="transform: scale(0.97);">Esplora il catalogo</button>
+            <button onClick="{{ vaiB2B }}" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; padding: 17px 36px; background: transparent; color: #23271C; border: 1px solid rgba(35,39,28,0.3); border-radius: 999px; cursor: pointer; transition: all .4s ease;" style-hover="border-color: #23271C; background: rgba(35,39,28,0.05);">Area B2B</button>
+          </div>
+        </div>
+
+        <div style="position: relative; z-index: 1; display: flex; justify-content: center;">
+          <!-- anello orbitante -->
+          <div data-parallax="-0.04" style="position: absolute; top: 50%; left: 50%; width: min(560px, 90vw); height: min(560px, 90vw); margin: calc(min(560px, 90vw) / -2) 0 0 calc(min(560px, 90vw) / -2); border: 1px solid rgba(35,39,28,0.18); border-radius: 50%; animation: vd-ring 46s linear infinite; pointer-events: none;">
+            <span style="position: absolute; top: -5px; left: 50%; width: 9px; height: 9px; margin-left: -4px; background: #23271C; border-radius: 50%;"></span>
+            <span style="position: absolute; top: 50%; right: -5px; width: 9px; height: 9px; margin-top: -4px; background: #A6A277; border-radius: 50%;"></span>
+            <span style="position: absolute; bottom: 12%; left: 12%; width: 6px; height: 6px; background: #6E7257; border-radius: 50%;"></span>
+          </div>
+          <div data-reveal data-reveal-delay="200" style="width: min(440px, 86vw); aspect-ratio: 44 / 58; border-radius: 999px 999px 16px 16px; overflow: hidden; box-shadow: 0 40px 80px rgba(35,39,28,0.18); animation: vd-float 9s ease-in-out infinite;">
+            <div style="position: relative; width: 100%; height: 100%;">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="hero-lampada" shape="rect" src="assets/hero.png" fit="cover" placeholder="Foto hero — lampada in ambiente" hint-size="440px,580px"></x-import>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: #6E7257;">
+          <span style="font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;">Scorri</span>
+          <span style="display: block; width: 1px; height: 34px; background: #6E7257; animation: vd-cue 2.4s ease-in-out infinite;"></span>
+        </div>
+      </section>
+
+      <!-- COLLEZIONI -->
+      <section data-screen-label="Collezioni" style="padding: 110px clamp(20px, 5vw, 72px); box-sizing: border-box;">
+        <div data-reveal style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px;">
+          <div>
+            <span style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #6E7257;">Collezioni</span>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px, 5vw, 52px); margin: 12px 0 0 0;">Tre modi di abitare la luce</h2>
+          </div>
+          <span onClick="{{ vaiCatalogo }}" style="font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #6E7257; border-bottom: 1px solid #A6A277; padding-bottom: 6px; cursor: pointer; transition: all .3s ease;" style-hover="color: #23271C; border-color: #23271C;">Tutto il catalogo →</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 28px;">
+          <sc-for list="{{ collezioni }}" as="c" hint-placeholder-count="3">
+            <div data-reveal data-reveal-delay="{{ c.ritardo }}" onClick="{{ c.apri }}" style="background: #EFEDE0; border-radius: 18px; padding: 18px 18px 26px 18px; cursor: pointer; transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease; box-sizing: border-box;" style-hover="transform: translateY(-8px); box-shadow: 0 30px 60px rgba(35,39,28,0.14);">
+              <div style="width: 100%; aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden; margin-bottom: 22px; position: relative; background: #FFFFFF;">
+                <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="coll-{{ c.id }}" shape="rect" src="{{ c.img }}" fit="{{ c.fit }}" placeholder="{{ c.placeholder }}" hint-size="100%,420px"></x-import>
+              </div>
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 6px;">
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; margin: 0; min-width: 0;">{{ c.nome }}</h3>
+                <span style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #6E7257; white-space: nowrap; flex-shrink: 0;">{{ c.conteggio }}</span>
+              </div>
+              <p style="font-size: 14px; line-height: 1.6; color: rgba(35,39,28,0.6); margin: 8px 6px 0 6px;">{{ c.testo }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <!-- IN EVIDENZA: MEGADOT -->
+      <section data-screen-label="In evidenza" style="background: #23271C; color: #F5F3EA; padding: 110px clamp(20px, 5vw, 72px); box-sizing: border-box;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: clamp(36px, 5vw, 72px); align-items: center; max-width: 1280px; margin: 0 auto;">
+          <div data-reveal style="position: relative;">
+            <div style="width: 100%; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; position: relative;">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="home-megadot" shape="rect" src="assets/megadot-ambiente.png" fit="cover" placeholder="Megadot in ambiente" hint-size="100%,600px"></x-import>
+              <div style="{{ stileGlow }}"></div>
+            </div>
+            <button onClick="{{ toggleLuce }}" style="position: absolute; bottom: 22px; left: 22px; z-index: 3; display: flex; align-items: center; gap: 10px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; padding: 12px 22px; background: rgba(245,243,234,0.14); color: #F5F3EA; border: 1px solid rgba(245,243,234,0.4); border-radius: 999px; cursor: pointer; backdrop-filter: blur(8px); transition: all .4s ease;" style-hover="background: rgba(245,243,234,0.28);">
+              <span style="{{ stilePuntoLuce }}"></span>
+              <span>{{ etichettaLuce }}</span>
+            </button>
+          </div>
+          <div>
+            <span data-reveal style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #A6A277;">In evidenza · Sospensione</span>
+            <h2 data-reveal data-reveal-delay="100" style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(42px, 6vw, 64px); margin: 16px 0 24px 0;">Megadot</h2>
+            <p data-reveal data-reveal-delay="200" style="font-size: 16px; line-height: 1.8; color: rgba(245,243,234,0.7); max-width: 440px; margin: 0 0 36px 0;">Un anello sottile in alluminio, punteggiato da proiettori orientabili. La luce ruota intorno allo spazio, senza mai occuparlo.</p>
+            <div data-reveal data-reveal-delay="300" style="display: flex; flex-direction: column; gap: 0; max-width: 440px; margin-bottom: 40px;">
+              <div style="display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid rgba(245,243,234,0.16); font-size: 14px;"><span style="color: rgba(245,243,234,0.55);">Diametro</span><span>Ø 80 / 120 cm</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid rgba(245,243,234,0.16); font-size: 14px;"><span style="color: rgba(245,243,234,0.55);">Sorgente</span><span>LED 2700K · dimmerabile</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid rgba(245,243,234,0.16); border-bottom: 1px solid rgba(245,243,234,0.16); font-size: 14px;"><span style="color: rgba(245,243,234,0.55);">Finiture</span><span>Nero opaco · Salvia · Ottone</span></div>
+            </div>
+            <div data-reveal data-reveal-delay="380" style="display: flex; align-items: center; gap: 24px;">
+              <button onClick="{{ apriMegadot }}" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; padding: 17px 36px; background: #F5F3EA; color: #23271C; border: none; border-radius: 999px; cursor: pointer; transition: all .4s ease;" style-hover="background: #A6A277; color: #23271C; transform: translateY(-2px);" style-active="transform: scale(0.97);">Scheda prodotto</button>
+              <span style="font-family: 'Cormorant Garamond', serif; font-size: 26px;">€ 1.200</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MANIFESTO -->
+      <section data-screen-label="Manifesto" style="padding: 150px clamp(20px, 5vw, 72px); text-align: center; position: relative; box-sizing: border-box;">
+        <div data-parallax="0.06" style="position: absolute; top: 60px; right: 6%; width: 300px; height: 300px; pointer-events: none; filter: blur(28px); opacity: 0.22; animation: vd-sway 15s ease-in-out infinite alternate;">
+          <div style="position: absolute; top: 30px; left: 40px; width: 200px; height: 90px; background: #A6A277; border-radius: 0 100% 0 100%; transform: rotate(-18deg);"></div>
+          <div style="position: absolute; top: 130px; left: 80px; width: 170px; height: 80px; background: #6E7257; border-radius: 100% 0 100% 0; transform: rotate(10deg);"></div>
+        </div>
+        <span data-reveal style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #6E7257;">Manifesto</span>
+        <p data-reveal data-reveal-delay="140" style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px, 5vw, 54px); line-height: 1.25; max-width: 900px; margin: 28px auto 32px auto;">Togliamo, finché non resta soltanto ciò che serve: <em style="font-style: italic; color: #6E7257;">una linea, una luce, il respiro di una pianta.</em></p>
+        <span data-reveal data-reveal-delay="260" style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(35,39,28,0.5);">Disegnato e prodotto in Italia</span>
+      </section>
+
+      <!-- B2B STRIP -->
+      <section data-screen-label="B2B strip" style="background: #A6A277; color: #23271C; padding: 90px 72px; box-sizing: border-box;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 48px; max-width: 1280px; margin: 0 auto;">
+          <div data-reveal style="max-width: 620px;">
+            <span style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(35,39,28,0.6);">Verdure Professional</span>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 46px; margin: 14px 0 16px 0;">Progetti contract, studi e rivenditori</h2>
+            <p style="font-size: 15px; line-height: 1.7; color: rgba(35,39,28,0.75); margin: 0;">Listini dedicati, supporto tecnico alla progettazione e tempi di consegna garantiti per hotel, retail e hospitality.</p>
+          </div>
+          <button data-reveal data-reveal-delay="150" onClick="{{ vaiB2B }}" style="flex-shrink: 0; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; padding: 18px 40px; background: #23271C; color: #F5F3EA; border: none; border-radius: 999px; cursor: pointer; transition: all .4s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 16px 34px rgba(35,39,28,0.3);" style-active="transform: scale(0.97);">Richiedi accesso</button>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ CATALOGO ============ -->
+  <sc-if value="{{ isCatalogo }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Catalogo" style="padding: 150px 72px 110px 72px; box-sizing: border-box; min-height: 100vh;">
+      <div data-reveal style="margin-bottom: 44px;">
+        <span style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #6E7257;">Catalogo 2026</span>
+        <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 62px; margin: 12px 0 0 0;">Tutti i pezzi</h1>
+      </div>
+      <div data-reveal data-reveal-delay="100" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px;">
+        <sc-for list="{{ filtri }}" as="f" hint-placeholder-count="5">
+          <button onClick="{{ f.scegli }}" style="{{ f.stile }}" style-hover="border-color: #23271C;">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 28px;">
+        <sc-for list="{{ prodotti }}" as="p" hint-placeholder-count="6">
+          <div data-reveal onClick="{{ p.apri }}" style="background: #EFEDE0; border-radius: 18px; padding: 16px 16px 24px 16px; cursor: pointer; transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease; box-sizing: border-box;" style-hover="transform: translateY(-8px); box-shadow: 0 30px 60px rgba(35,39,28,0.14);">
+            <div style="width: 100%; aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden; margin-bottom: 20px; position: relative;">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="cat-{{ p.id }}" shape="rect" placeholder="{{ p.nome }}" hint-size="100%,380px"></x-import>
+            </div>
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 6px;">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 26px; margin: 0; min-width: 0;">{{ p.nome }}</h3>
+              <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6E7257; white-space: nowrap; flex-shrink: 0;">{{ p.cat }}</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 14px; padding: 8px 6px 0 6px;">
+              <span style="font-size: 15px;">{{ p.prezzoTxt }}</span>
+              <sc-if value="{{ p.mostraB2B }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size: 12px; letter-spacing: 0.08em; color: #6E7257; background: #D8D5BD; padding: 3px 10px; border-radius: 999px;">{{ p.b2bTxt }}</span>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- ============ PRODOTTO ============ -->
+  <sc-if value="{{ isProdotto }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Prodotto" style="padding: 140px 72px 110px 72px; box-sizing: border-box; min-height: 100vh;">
+      <div data-reveal style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(35,39,28,0.5); margin-bottom: 36px;">
+        <span onClick="{{ vaiHome }}" style="cursor: pointer; color: #6E7257;">Home</span>
+        <span style="margin: 0 10px;">/</span>
+        <span onClick="{{ vaiCatalogo }}" style="cursor: pointer; color: #6E7257;">Catalogo</span>
+        <span style="margin: 0 10px;">/</span>
+        <span>{{ prod.nome }}</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: start;">
+        <div data-reveal style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="width: 100%; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; position: relative;">
+            <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-{{ prod.id }}-main" shape="rect" placeholder="{{ prod.nome }} — vista principale" hint-size="100%,640px"></x-import>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; position: relative;">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-{{ prod.id }}-2" shape="rect" placeholder="Dettaglio" hint-size="100%,220px"></x-import>
+            </div>
+            <div style="width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; position: relative;">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-{{ prod.id }}-3" shape="rect" placeholder="In ambiente" hint-size="100%,220px"></x-import>
+            </div>
+          </div>
+        </div>
+        <div style="position: sticky; top: 120px;">
+          <span data-reveal style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #6E7257;">{{ prod.cat }}</span>
+          <h1 data-reveal data-reveal-delay="80" style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 60px; margin: 12px 0 18px 0;">{{ prod.nome }}</h1>
+          <p data-reveal data-reveal-delay="160" style="font-size: 15px; line-height: 1.75; color: rgba(35,39,28,0.7); margin: 0 0 30px 0;">{{ prod.desc }}</p>
+          <div data-reveal data-reveal-delay="220" style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 34px;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 34px;">{{ prod.prezzoTxt }}</span>
+            <sc-if value="{{ prod.mostraB2B }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size: 12px; letter-spacing: 0.08em; color: #6E7257; background: #D8D5BD; padding: 4px 12px; border-radius: 999px;">{{ prod.b2bTxt }}</span>
+            </sc-if>
+          </div>
+          <div data-reveal data-reveal-delay="280" style="margin-bottom: 30px;">
+            <span style="font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(35,39,28,0.55); display: block; margin-bottom: 12px;">Finitura — {{ finitura }}</span>
+            <div style="display: flex; gap: 12px;">
+              <sc-for list="{{ finiture }}" as="fin" hint-placeholder-count="3">
+                <span onClick="{{ fin.scegli }}" title="{{ fin.nome }}" style="{{ fin.stile }}"></span>
+              </sc-for>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="340" style="display: flex; align-items: center; gap: 16px; margin-bottom: 26px;">
+            <div style="display: flex; align-items: center; border: 1px solid rgba(35,39,28,0.25); border-radius: 999px; overflow: hidden;">
+              <button onClick="{{ menoQty }}" style="font-family: 'Jost', sans-serif; width: 44px; height: 50px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #23271C;" style-hover="background: rgba(35,39,28,0.06);">−</button>
+              <span style="width: 40px; text-align: center; font-size: 15px;">{{ qty }}</span>
+              <button onClick="{{ piuQty }}" style="font-family: 'Jost', sans-serif; width: 44px; height: 50px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #23271C;" style-hover="background: rgba(35,39,28,0.06);">+</button>
+            </div>
+            <button onClick="{{ aggiungiAlCarrello }}" style="flex: 1; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; padding: 17px 30px; background: #23271C; color: #F5F3EA; border: none; border-radius: 999px; cursor: pointer; transition: all .4s ease;" style-hover="background: #6E7257; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(35,39,28,0.22);" style-active="transform: scale(0.97);">Aggiungi al carrello</button>
+          </div>
+          <div data-reveal data-reveal-delay="400" style="display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; padding: 13px 0; border-top: 1px solid rgba(35,39,28,0.12); font-size: 14px;"><span style="color: rgba(35,39,28,0.55);">Materiale</span><span>{{ prod.materiale }}</span></div>
+            <div style="display: flex; justify-content: space-between; padding: 13px 0; border-top: 1px solid rgba(35,39,28,0.12); font-size: 14px;"><span style="color: rgba(35,39,28,0.55);">Dimensioni</span><span>{{ prod.dimensioni }}</span></div>
+            <div style="display: flex; justify-content: space-between; padding: 13px 0; border-top: 1px solid rgba(35,39,28,0.12); border-bottom: 1px solid rgba(35,39,28,0.12); font-size: 14px;"><span style="color: rgba(35,39,28,0.55);">Consegna</span><span>3–5 settimane</span></div>
+          </div>
+          <div data-reveal data-reveal-delay="460" style="margin-top: 26px; background: #EFEDE0; border-radius: 14px; padding: 20px 24px; font-size: 14px; line-height: 1.6; color: rgba(35,39,28,0.7);">
+            Sei un professionista? <span onClick="{{ vaiB2B }}" style="color: #6E7257; border-bottom: 1px solid #A6A277; cursor: pointer;">Accedi al listino B2B</span> per quantità e condizioni dedicate.
+          </div>
+        </div>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- ============ B2B ============ -->
+  <sc-if value="{{ isB2B }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="B2B" style="min-height: 100vh;">
+      <section style="background: #23271C; color: #F5F3EA; padding: 170px 72px 100px 72px; box-sizing: border-box; position: relative; overflow: hidden;">
+        <div data-parallax="0.05" style="position: absolute; top: 40px; right: 8%; width: 340px; height: 340px; pointer-events: none; filter: blur(30px); opacity: 0.25; animation: vd-sway 17s ease-in-out infinite alternate;">
+          <div style="position: absolute; top: 20px; left: 40px; width: 220px; height: 100px; background: #A6A277; border-radius: 0 100% 0 100%; transform: rotate(-20deg);"></div>
+          <div style="position: absolute; top: 140px; left: 90px; width: 180px; height: 80px; background: #6E7257; border-radius: 100% 0 100% 0; transform: rotate(12deg);"></div>
+        </div>
+        <div style="max-width: 760px;">
+          <span data-reveal style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #A6A277;">Verdure Professional</span>
+          <h1 data-reveal data-reveal-delay="100" style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 68px; line-height: 1.05; margin: 16px 0 22px 0;">La luce giusta,<br>su scala di progetto.</h1>
+          <p data-reveal data-reveal-delay="200" style="font-size: 16px; line-height: 1.8; color: rgba(245,243,234,0.7); max-width: 540px; margin: 0;">Un canale dedicato a studi di progettazione, contract e rivenditori: condizioni riservate, campionature e assistenza tecnica lungo tutto il progetto.</p>
+        </div>
+      </section>
+
+      <section style="padding: 90px 72px; box-sizing: border-box;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 28px; margin-bottom: 90px;">
+          <sc-for list="{{ vantaggi }}" as="v" hint-placeholder-count="3">
+            <div data-reveal data-reveal-delay="{{ v.ritardo }}" style="background: #EFEDE0; border-radius: 18px; padding: 36px 32px; transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;" style-hover="transform: translateY(-6px); box-shadow: 0 24px 50px rgba(35,39,28,0.12);">
+              <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 30px; color: #6E7257;">{{ v.num }}</span>
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 27px; margin: 14px 0 10px 0;">{{ v.titolo }}</h3>
+              <p style="font-size: 14px; line-height: 1.7; color: rgba(35,39,28,0.65); margin: 0;">{{ v.testo }}</p>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: start; max-width: 1200px; margin: 0 auto;">
+          <div data-reveal>
+            <span style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #6E7257;">Richiedi accesso</span>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 48px; margin: 14px 0 18px 0;">Apri il tuo account professionale</h2>
+            <p style="font-size: 15px; line-height: 1.75; color: rgba(35,39,28,0.7); margin: 0;">Compila il modulo: il nostro team verifica i dati e attiva il listino riservato entro 48 ore lavorative.</p>
+          </div>
+          <div data-reveal data-reveal-delay="150" style="background: #EFEDE0; border-radius: 20px; padding: 44px; box-sizing: border-box;">
+            <sc-if value="{{ b2bNonInviato }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 18px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+                  <input placeholder="Ragione sociale" style="font-family: 'Jost', sans-serif; font-size: 14px; padding: 15px 18px; border: 1px solid rgba(35,39,28,0.18); border-radius: 10px; background: #F5F3EA; color: #23271C; outline: none; box-sizing: border-box; width: 100%;" style-focus="border-color: #6E7257;">
+                  <input placeholder="Partita IVA" style="font-family: 'Jost', sans-serif; font-size: 14px; padding: 15px 18px; border: 1px solid rgba(35,39,28,0.18); border-radius: 10px; background: #F5F3EA; color: #23271C; outline: none; box-sizing: border-box; width: 100%;" style-focus="border-color: #6E7257;">
+                </div>
+                <input placeholder="Email professionale" style="font-family: 'Jost', sans-serif; font-size: 14px; padding: 15px 18px; border: 1px solid rgba(35,39,28,0.18); border-radius: 10px; background: #F5F3EA; color: #23271C; outline: none; box-sizing: border-box; width: 100%;" style-focus="border-color: #6E7257;">
+                <input placeholder="Settore (contract, retail, studio…)" style="font-family: 'Jost', sans-serif; font-size: 14px; padding: 15px 18px; border: 1px solid rgba(35,39,28,0.18); border-radius: 10px; background: #F5F3EA; color: #23271C; outline: none; box-sizing: border-box; width: 100%;" style-focus="border-color: #6E7257;">
+                <textarea placeholder="Raccontaci il tuo progetto" rows="4" style="font-family: 'Jost', sans-serif; font-size: 14px; padding: 15px 18px; border: 1px solid rgba(35,39,28,0.18); border-radius: 10px; background: #F5F3EA; color: #23271C; outline: none; resize: vertical; box-sizing: border-box; width: 100%;" style-focus="border-color: #6E7257;"></textarea>
+                <button onClick="{{ inviaB2B }}" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; padding: 17px 30px; background: #23271C; color: #F5F3EA; border: none; border-radius: 999px; cursor: pointer; transition: all .4s ease; margin-top: 6px;" style-hover="background: #6E7257; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(35,39,28,0.22);" style-active="transform: scale(0.97);">Invia richiesta</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ b2bInviato }}" hint-placeholder-val="{{ false }}">
+              <div style="text-align: center; padding: 30px 10px;">
+                <div style="width: 58px; height: 58px; border-radius: 50%; background: #A6A277; color: #23271C; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px auto;">✓</div>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; margin: 0 0 10px 0;">Richiesta inviata</h3>
+                <p style="font-size: 14px; line-height: 1.7; color: rgba(35,39,28,0.65); margin: 0;">Grazie. Il team Verdure Professional ti contatterà entro 48 ore lavorative.</p>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ FOOTER ============ -->
+  <footer data-screen-label="Footer" style="background: #1C2016; color: #F5F3EA; padding: 80px 72px 40px 72px; box-sizing: border-box;">
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.4fr; gap: 48px; margin-bottom: 64px;">
+      <div>
+        <div style="display: flex; flex-direction: column; gap: 2px; margin-bottom: 18px;">
+          <span style="font-weight: 600; letter-spacing: 0.42em; font-size: 18px;">VERDURE</span>
+          <span style="letter-spacing: 0.34em; font-size: 9px; color: #A6A277;">notonlydesign</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.7; color: rgba(245,243,234,0.55); max-width: 280px; margin: 0;">Illuminazione e arredo di design, per chi coltiva gli spazi come giardini.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #A6A277;">Esplora</span>
+        <span onClick="{{ vaiCatalogo }}" style="font-size: 14px; color: rgba(245,243,234,0.75); cursor: pointer; transition: color .3s;" style-hover="color: #F5F3EA;">Catalogo</span>
+        <span onClick="{{ apriMegadot }}" style="font-size: 14px; color: rgba(245,243,234,0.75); cursor: pointer; transition: color .3s;" style-hover="color: #F5F3EA;">Megadot</span>
+        <span onClick="{{ vaiB2B }}" style="font-size: 14px; color: rgba(245,243,234,0.75); cursor: pointer; transition: color .3s;" style-hover="color: #F5F3EA;">Professional</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #A6A277;">Contatti</span>
+        <span style="font-size: 14px; color: rgba(245,243,234,0.75);">hello@verdure.design</span>
+        <span style="font-size: 14px; color: rgba(245,243,234,0.75);">+39 02 000 0000</span>
+        <span style="font-size: 14px; color: rgba(245,243,234,0.75);">Showroom — Milano</span>
+      </div>
+      <div>
+        <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #A6A277; display: block; margin-bottom: 16px;">Newsletter</span>
+        <div style="display: flex; gap: 10px;">
+          <input placeholder="La tua email" style="font-family: 'Jost', sans-serif; flex: 1; font-size: 14px; padding: 14px 18px; border: 1px solid rgba(245,243,234,0.25); border-radius: 999px; background: transparent; color: #F5F3EA; outline: none; min-width: 0;" style-focus="border-color: #A6A277;">
+          <button style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px 24px; background: #A6A277; color: #23271C; border: none; border-radius: 999px; cursor: pointer; transition: all .35s ease; flex-shrink: 0;" style-hover="background: #F5F3EA;">Iscriviti</button>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 28px; border-top: 1px solid rgba(245,243,234,0.12); font-size: 12px; color: rgba(245,243,234,0.4); letter-spacing: 0.06em;">
+      <span>© 2026 Verdure S.r.l. — P.IVA 00000000000</span>
+      <span>Privacy · Cookie · Termini</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;modalitaB2B&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Vendita&quot; },
+  &quot;riduciAnimazioni&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Animazioni&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    page: 'home',
+    filtro: 'Tutti',
+    prodottoId: 'megadot',
+    luce: false,
+    carrello: 0,
+    bump: false,
+    finitura: 'Nero opaco',
+    qty: 1,
+    b2bSent: false,
+  };
+
+  catalogo = [
+    { id: 'megadot', nome: 'Megadot', cat: 'Sospensione', prezzo: 1200, b2b: 950, img: 'assets/prod-megadot.png', desc: 'Un anello sottile in alluminio, punteggiato da proiettori orientabili. La luce ruota intorno allo spazio, senza mai occuparlo.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 80 / 120 cm' },
+    { id: 'superdot', nome: 'Superdot', cat: 'Sospensione', prezzo: 1200, b2b: 950, img: 'assets/prod-superdot.png', desc: 'Anello continuo a emissione diffusa, sospeso su cavi in acciaio quasi invisibili.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 60 / 90 cm' },
+    { id: 'wiredot', nome: 'Wiredot', cat: 'Sospensione', prezzo: 1200, b2b: 950, img: 'assets/prod-wiredot.png', desc: 'Cerchio sottile a emissione diretta, ideale sopra tavoli e isole.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 60 / 90 / 120 cm' },
+    { id: 'underlined', nome: 'Underlined', cat: 'Sospensione', prezzo: 1200, b2b: 950, img: 'assets/prod-underlined.png', desc: 'Profilo lineare sospeso con punti luce dorati a vista.', materiale: 'Alluminio · ottone', dimensioni: 'L 120 / 180 cm' },
+    { id: 'dot', nome: 'Dot', cat: 'Soffitto', prezzo: 500, b2b: 390, img: 'assets/prod-dot.png', desc: 'Proiettore puntiforme a soffitto, minimo e orientabile.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 9 cm' },
+    { id: 'tod', nome: 'Tod', cat: 'Soffitto', prezzo: 500, b2b: 390, img: 'assets/prod-tod.png', desc: 'Cilindro a plafone con ottica incassata e profilo morbido.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 12 cm' },
+    { id: 'slash', nome: 'Slash', cat: 'Incasso', prezzo: 500, b2b: 390, img: 'assets/prod-slash.png', desc: 'Incasso tondo con ghiera a scomparsa e alto comfort visivo.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 8,5 cm' },
+    { id: 'microdot', nome: 'Microdot', cat: 'Incasso', prezzo: 500, b2b: 390, img: 'assets/prod-microdot.png', desc: 'Micro incasso puntiforme, quasi invisibile a luce spenta.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 4 cm' },
+    { id: 'asterix', nome: 'Asterix', cat: 'Incasso', prezzo: 500, b2b: 390, img: 'assets/prod-asterix.png', desc: 'Incasso ad alte prestazioni con dissipazione ottimizzata.', materiale: 'Alluminio · dissipatore', dimensioni: 'Ø 9 cm' },
+    { id: 'dash', nome: 'Dash', cat: 'Incasso', prezzo: 500, b2b: 390, img: 'assets/prod-dash.png', desc: 'Incasso lineare a tre ottiche, per percorsi e piani di lavoro.', materiale: 'Alluminio verniciato', dimensioni: 'L 18 cm' },
+    { id: 'wiredot-recessed', nome: 'Wiredot Recessed', cat: 'Incasso', prezzo: 500, b2b: 390, img: 'assets/prod-wiredot-recessed.png', desc: 'La geometria di Wiredot, incassata a filo soffitto.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 60 / 90 cm' },
+    { id: 'moreorless', nome: 'Moreorless', cat: 'Incasso', prezzo: 500, b2b: 390, img: 'assets/prod-moreorless.png', desc: 'Incasso orientabile a scomparsa totale nel controsoffitto.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 8 cm' },
+    { id: 'grade', nome: 'Grade', cat: 'Incasso', prezzo: 500, b2b: 390, img: 'assets/prod-grade.png', desc: 'Incasso trimless con ottica regressa antiabbagliamento.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 8,5 cm' },
+    { id: 'grade-plus', nome: 'Grade Plus', cat: 'Soffitto', prezzo: 500, b2b: 390, img: 'assets/prod-grade-plus.png', desc: 'Il cilindro a plafone della famiglia Grade, in due finiture.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 10 cm' },
+    { id: 'sun-sunset', nome: 'Sun/Sunset', cat: 'Soffitto', prezzo: 500, b2b: 390, img: 'assets/prod-sun-sunset.png', desc: 'Proiettore orientabile a soffitto con rotazione a 350°.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 10 cm' },
+    { id: 'hatch', nome: 'Hatch', cat: 'Soffitto', prezzo: 500, b2b: 390, img: 'assets/prod-hatch.png', desc: 'Plafoniera anulare a luce morbida, diretta e indiretta.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 40 cm' },
+    { id: 'comma', nome: 'Comma', cat: 'Parete', prezzo: 500, b2b: 390, img: 'assets/prod-comma.png', desc: 'Applique a campana con emissione calda verso il basso.', materiale: 'Alluminio verniciato', dimensioni: 'L 14 cm' },
+    { id: 'focus', nome: 'Focus', cat: 'Soffitto', prezzo: 500, b2b: 390, img: 'assets/prod-focus.png', desc: 'Proiettore semi-incassato orientabile, a scomparsa.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 7 cm' },
+    { id: 'focus-plus', nome: 'Focus Plus', cat: 'Soffitto', prezzo: 500, b2b: 390, img: 'assets/prod-focus-plus.png', desc: 'Proiettore telescopico regolabile con ottica di precisione.', materiale: 'Alluminio verniciato', dimensioni: 'Ø 7 cm' },
+  ];
+
+  fmt(n) { return '€ ' + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+
+  vai(page, extra) {
+    this.setState(Object.assign({ page: page }, extra || {}));
+    window.scrollTo(0, 0);
+  }
+
+  componentDidMount() {
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          this.observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    this.onScroll = () => {
+      const y = window.scrollY;
+      document.querySelectorAll('[data-parallax]').forEach((el) => {
+        const speed = parseFloat(el.getAttribute('data-parallax')) || 0;
+        el.style.marginTop = (y * speed) + 'px';
+      });
+    };
+    if (!this.props.riduciAnimazioni) window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.setupFx();
+  }
+
+  componentDidUpdate() { this.setupFx(); }
+
+  componentWillUnmount() {
+    if (this.observer) this.observer.disconnect();
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  setupFx() {
+    document.querySelectorAll('[data-reveal]:not([data-fx])').forEach((el) => {
+      el.setAttribute('data-fx', '1');
+      if (this.props.riduciAnimazioni) return;
+      const delay = parseInt(el.getAttribute('data-reveal-delay') || '0', 10);
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+      el.style.transition = 'opacity 1s cubic-bezier(.22,1,.36,1) ' + delay + 'ms, transform 1s cubic-bezier(.22,1,.36,1) ' + delay + 'ms';
+      this.observer.observe(el);
+    });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const b2bAttivo = !!this.props.modalitaB2B;
+    const prodotto = this.catalogo.find((p) => p.id === s.prodottoId) || this.catalogo[0];
+
+    const cats = ['Tutti', 'Sospensione', 'Incasso', 'Soffitto', 'Parete'];
+    const filtri = cats.map((c) => ({
+      label: c,
+      scegli: () => this.setState({ filtro: c }),
+      stile: {
+        fontFamily: "'Jost', sans-serif",
+        fontSize: '12px', letterSpacing: '0.16em', textTransform: 'uppercase',
+        padding: '11px 22px', borderRadius: '999px', cursor: 'pointer',
+        transition: 'all .35s ease',
+        background: s.filtro === c ? '#23271C' : 'transparent',
+        color: s.filtro === c ? '#F5F3EA' : '#23271C',
+        border: '1px solid ' + (s.filtro === c ? '#23271C' : 'rgba(35,39,28,0.25)'),
+      },
+    }));
+
+    const prodotti = this.catalogo
+      .filter((p) => s.filtro === 'Tutti' || p.cat === s.filtro)
+      .map((p) => ({
+        id: p.id, nome: p.nome, cat: p.cat, img: p.img,
+        prezzoTxt: this.fmt(p.prezzo),
+        b2bTxt: 'B2B ' + this.fmt(p.b2b),
+        mostraB2B: b2bAttivo,
+        apri: () => this.vai('prodotto', { prodottoId: p.id, qty: 1, finitura: 'Nero opaco' }),
+      }));
+
+    const finiture = ['Nero opaco', 'Salvia', 'Ottone'].map((nome) => {
+      const colori = { 'Nero opaco': '#23271C', 'Salvia': '#A6A277', 'Ottone': '#B08D4F' };
+      const attiva = s.finitura === nome;
+      return {
+        nome: nome,
+        scegli: () => this.setState({ finitura: nome }),
+        stile: {
+          width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer',
+          background: colori[nome], display: 'inline-block',
+          boxShadow: attiva ? '0 0 0 2px #F5F3EA, 0 0 0 4px #6E7257' : '0 0 0 1px rgba(35,39,28,0.2)',
+          transition: 'box-shadow .3s ease, transform .3s ease',
+          transform: attiva ? 'scale(1.05)' : 'scale(1)',
+        },
+      };
+    });
+
+    return {
+      isHome: s.page === 'home',
+      isCatalogo: s.page === 'catalogo',
+      isProdotto: s.page === 'prodotto',
+      isB2B: s.page === 'b2b',
+
+      vaiHome: () => this.vai('home'),
+      vaiCatalogo: () => this.vai('catalogo'),
+      vaiB2B: () => this.vai('b2b'),
+      apriMegadot: () => this.vai('prodotto', { prodottoId: 'megadot', qty: 1 }),
+
+      stileNavHome: this.stileNav(s.page === 'home'),
+      stileNavCatalogo: this.stileNav(s.page === 'catalogo'),
+      stileNavB2B: this.stileNav(s.page === 'b2b'),
+
+      carrello: s.carrello,
+      stileBadgeCarrello: {
+        minWidth: '20px', height: '20px', borderRadius: '999px',
+        background: '#A6A277', color: '#23271C', fontSize: '11px', fontWeight: 500,
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        padding: '0 5px', boxSizing: 'border-box',
+        transition: 'transform .35s cubic-bezier(.34,1.7,.5,1)',
+        transform: s.bump ? 'scale(1.5)' : 'scale(1)',
+      },
+
+      collezioni: [
+        { id: 'sospensione', nome: 'Sospensione', conteggio: '04 pezzi', ritardo: 0, placeholder: 'Foto collezione sospensione', img: 'assets/megadot-dettaglio.png', fit: 'cover', testo: 'Anelli e profili sospesi che disegnano lo spazio dall\u2019alto.', apri: () => this.vai('catalogo', { filtro: 'Sospensione' }) },
+        { id: 'incasso', nome: 'Incasso', conteggio: '07 pezzi', ritardo: 120, placeholder: 'Foto incassi', img: 'assets/prod-slash.png', fit: 'contain', testo: 'Punti luce a scomparsa, quasi invisibili a luce spenta.', apri: () => this.vai('catalogo', { filtro: 'Incasso' }) },
+        { id: 'soffitto', nome: 'Soffitto & Parete', conteggio: '08 pezzi', ritardo: 240, placeholder: 'Foto plafoni e applique', img: 'assets/prod-comma.png', fit: 'contain', testo: 'Cilindri e proiettori orientabili, dove serve precisione.', apri: () => this.vai('catalogo', { filtro: 'Soffitto' }) },
+      ],
+
+      luce: s.luce,
+      toggleLuce: () => this.setState({ luce: !s.luce }),
+      etichettaLuce: s.luce ? 'Spegni' : 'Accendi',
+      stilePuntoLuce: {
+        width: '8px', height: '8px', borderRadius: '50%',
+        background: s.luce ? '#F0E6C8' : 'rgba(245,243,234,0.35)',
+        boxShadow: s.luce ? '0 0 12px 3px rgba(240,230,200,0.8)' : 'none',
+        transition: 'all .6s ease',
+      },
+      stileGlow: {
+        position: 'absolute', inset: '0', pointerEvents: 'none', zIndex: 2,
+        background: 'radial-gradient(ellipse 70% 55% at 50% 38%, rgba(240,230,200,0.5), rgba(240,230,200,0.08) 60%, transparent 75%)',
+        opacity: s.luce ? 1 : 0,
+        transition: 'opacity 1.4s ease',
+      },
+
+      filtri: filtri,
+      prodotti: prodotti,
+
+      prod: {
+        id: prodotto.id, nome: prodotto.nome, cat: prodotto.cat, desc: prodotto.desc,
+        materiale: prodotto.materiale, dimensioni: prodotto.dimensioni,
+        img: prodotto.id === 'megadot' ? 'assets/megadot-dettaglio.png' : prodotto.img,
+        fit: prodotto.id === 'megadot' ? 'cover' : 'contain',
+        img2: prodotto.id === 'megadot' ? 'assets/prod-megadot.png' : undefined,
+        img3: prodotto.id === 'megadot' ? 'assets/megadot-ambiente.png' : undefined,
+        prezzoTxt: this.fmt(prodotto.prezzo),
+        b2bTxt: 'B2B ' + this.fmt(prodotto.b2b),
+        mostraB2B: b2bAttivo,
+      },
+      finitura: s.finitura,
+      finiture: finiture,
+      qty: s.qty,
+      menoQty: () => this.setState({ qty: Math.max(1, s.qty - 1) }),
+      piuQty: () => this.setState({ qty: s.qty + 1 }),
+      aggiungiAlCarrello: () => {
+        this.setState({ carrello: s.carrello + s.qty, bump: true });
+        clearTimeout(this._bumpT);
+        this._bumpT = setTimeout(() => this.setState({ bump: false }), 450);
+      },
+
+      vantaggi: [
+        { num: '01', ritardo: 0, titolo: 'Listini dedicati', testo: 'Condizioni riservate su tutto il catalogo, con scale sconto per quantità e continuità.' },
+        { num: '02', ritardo: 120, titolo: 'Supporto tecnico', testo: 'Schede fotometriche, file BIM e un light designer al tuo fianco dalla bozza al cantiere.' },
+        { num: '03', ritardo: 240, titolo: 'Tempi garantiti', testo: 'Produzione pianificata sul cronoprogramma del progetto, con consegne tracciate.' },
+      ],
+      b2bNonInviato: !s.b2bSent,
+      b2bInviato: s.b2bSent,
+      inviaB2B: () => this.setState({ b2bSent: true }),
+    };
+  }
+
+  stileNav(attivo) {
+    return {
+      fontSize: '13px', letterSpacing: '0.18em', textTransform: 'uppercase',
+      cursor: 'pointer', transition: 'color .3s ease',
+      color: attivo ? '#23271C' : 'rgba(35,39,28,0.55)',
+      borderBottom: attivo ? '1px solid #A6A277' : '1px solid transparent',
+      paddingBottom: '3px',
+    };
+  }
+}
+</script>
+</body>
+</html>
