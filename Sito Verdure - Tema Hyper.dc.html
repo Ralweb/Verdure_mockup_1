@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #fff; }
+    .vd-marquee-track { display: flex; width: max-content; animation: vd-scroll 22s linear infinite; }
+    @keyframes vd-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  </style>
+</helmet>
+
+<div style="font-family:'Inter',sans-serif; background:#fff; width:100%; overflow-x:hidden;">
+
+  <!-- header -->
+  <div style="{{ headerStyle }}">
+    <div style="display:flex; flex-direction:column; line-height:1; cursor:pointer;" onClick="{{ goHome }}">
+      <span style="font-family:'Bebas Neue',sans-serif; letter-spacing:5px; font-size:22px; color:#fff;">VERDURE</span>
+      <span style="font-family:'Playfair Display',serif; font-style:italic; letter-spacing:2px; font-size:10px; color:#c7bd8f;">notonlydesign</span>
+    </div>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; gap:5px; padding:8px; cursor:pointer;" onClick="{{ toggleMenu }}">
+        <div style="width:22px; height:2px; background:#fff;"></div>
+        <div style="width:22px; height:2px; background:#fff;"></div>
+        <div style="width:22px; height:2px; background:#fff;"></div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; gap:36px; font-size:13px; letter-spacing:1.5px; color:#d8d6cd; font-weight:600;">
+        <span style="cursor:pointer;" onClick="{{ goHome }}">HOME</span>
+        <span style="cursor:pointer;" onClick="{{ goProduct }}">PRODOTTI</span>
+        <span>COLLEZIONI</span><span>CONTATTI</span>
+      </div>
+      <div style="padding:12px 24px; background:#d4b96a; color:#1c1c1a; font-size:12px; font-weight:800; letter-spacing:1.5px; cursor:pointer;">CATALOGO 2026</div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; flex-direction:column; background:#1c1c1a; border-top:1px solid #33322c;">
+      <div style="padding:18px 20px; color:#fff; font-size:14px; letter-spacing:1.5px; border-bottom:1px solid #2c2b26;" onClick="{{ goHome }}">HOME</div>
+      <div style="padding:18px 20px; color:#fff; font-size:14px; letter-spacing:1.5px; border-bottom:1px solid #2c2b26;" onClick="{{ goProduct }}">PRODOTTI</div>
+      <div style="padding:18px 20px; color:#fff; font-size:14px; letter-spacing:1.5px; border-bottom:1px solid #2c2b26;">COLLEZIONI</div>
+      <div style="padding:18px 20px; color:#fff; font-size:14px; letter-spacing:1.5px;">CONTATTI</div>
+    </div>
+  </sc-if>
+
+  <!-- ================= HOME PAGE ================= -->
+  <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <!-- hero -->
+      <div style="{{ heroStyle }}">
+        <div style="{{ heroTextWrapStyle }}">
+          <div style="font-size:13px; letter-spacing:3px; color:#d4b96a; font-weight:700;">SUSPENDED LIGHT COLLECTION</div>
+          <div style="{{ heroTitleStyle }}">ILLUMINAZIONE<br>CHE PRENDE <span style="color:#d4b96a; font-family:'Playfair Display',serif; font-style:italic; font-weight:600; letter-spacing:0;">forma</span></div>
+          <div style="{{ heroCopyStyle }}">Corpi illuminanti tecnici disegnati per l'architettura contemporanea. Megadot, Superdot e Wiredot: la luce diventa struttura.</div>
+          <div style="{{ heroBtnWrapStyle }}">
+            <div style="padding:16px 30px; background:#d4b96a; color:#1c1c1a; font-weight:800; font-size:13px; letter-spacing:1.5px; text-align:center; cursor:pointer;" onClick="{{ goProduct }}">ESPLORA LA COLLEZIONE</div>
+            <div style="padding:16px 30px; border:1px solid #55534a; color:#fff; font-weight:600; font-size:13px; letter-spacing:1.5px; text-align:center;">SCARICA IL CATALOGO</div>
+          </div>
+        </div>
+        <div style="{{ heroImgWrapStyle }}">
+          <img src="assets/hero-pendant.png" style="width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.92);">
+        </div>
+      </div>
+
+      <!-- marquee -->
+      <div style="height:52px; background:#d4b96a; display:flex; align-items:center; overflow:hidden;">
+        <div class="vd-marquee-track">
+          <span style="display:flex; gap:32px; padding-right:32px; font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:3px; color:#1c1c1a; white-space:nowrap;">MEGADOT &nbsp;•&nbsp; SUPERDOT &nbsp;•&nbsp; WIREDOT &nbsp;•&nbsp; MEGADOT &nbsp;•&nbsp; SUPERDOT &nbsp;•&nbsp; WIREDOT &nbsp;•&nbsp;</span>
+          <span style="display:flex; gap:32px; padding-right:32px; font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:3px; color:#1c1c1a; white-space:nowrap;">MEGADOT &nbsp;•&nbsp; SUPERDOT &nbsp;•&nbsp; WIREDOT &nbsp;•&nbsp; MEGADOT &nbsp;•&nbsp; SUPERDOT &nbsp;•&nbsp; WIREDOT &nbsp;•&nbsp;</span>
+        </div>
+      </div>
+
+      <!-- product grid -->
+      <div style="{{ sectionPadStyle }}">
+        <div style="{{ sectionHeadStyle }}">
+          <div style="{{ sectionTitleStyle }}">SUSPENDED LIGHT</div>
+          <div style="font-size:13px; letter-spacing:1.5px; color:#8f8760; font-weight:700; border-bottom:1px solid #8f8760; padding-bottom:2px; cursor:pointer;" onClick="{{ goProduct }}">VEDI TUTTA LA COLLEZIONE →</div>
+        </div>
+        <div style="{{ gridStyle }}">
+
+          <div style="background:#f6f4ee; padding:32px 24px; display:flex; flex-direction:column; align-items:center; gap:16px; cursor:pointer;" onClick="{{ goProduct }}">
+            <div style="font-size:11px; letter-spacing:1.5px; font-weight:700; color:#8f8760; align-self:flex-start; background:#e6e1d0; padding:5px 12px;">SUSPENDED</div>
+            <img src="assets/megadot.png" style="width:160px; height:160px; object-fit:cover; border-radius:50%; border:1px solid #ddd8c6;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; color:#201f1c;">MEGADOT</div>
+            <div style="font-size:13px; color:#6b6a63; text-align:center;">Anello sospeso multi-attacco, finitura nero opaco</div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; color:#201f1c; border-bottom:1px solid #201f1c;">SCOPRI →</div>
+          </div>
+
+          <div style="background:#f6f4ee; padding:32px 24px; display:flex; flex-direction:column; align-items:center; gap:16px; cursor:pointer;" onClick="{{ goProduct }}">
+            <div style="font-size:11px; letter-spacing:1.5px; font-weight:700; color:#8f8760; align-self:flex-start; background:#e6e1d0; padding:5px 12px;">SUSPENDED</div>
+            <img src="assets/superdot.png" style="width:160px; height:160px; object-fit:cover; border-radius:50%; border:1px solid #ddd8c6;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; color:#201f1c;">SUPERDOT</div>
+            <div style="font-size:13px; color:#6b6a63; text-align:center;">Profilo sospeso a nastro, luce diffusa continua</div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; color:#201f1c; border-bottom:1px solid #201f1c;">SCOPRI →</div>
+          </div>
+
+          <div style="background:#f6f4ee; padding:32px 24px; display:flex; flex-direction:column; align-items:center; gap:16px; cursor:pointer;" onClick="{{ goProduct }}">
+            <div style="font-size:11px; letter-spacing:1.5px; font-weight:700; color:#8f8760; align-self:flex-start; background:#e6e1d0; padding:5px 12px;">SUSPENDED</div>
+            <img src="assets/wiredot.png" style="width:160px; height:160px; object-fit:cover; border-radius:50%; border:1px solid #ddd8c6;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; color:#201f1c;">WIREDOT</div>
+            <div style="font-size:13px; color:#6b6a63; text-align:center;">Anello wireless a sospensione, ottica regolabile</div>
+            <div style="font-size:12px; font-weight:700; letter-spacing:1px; color:#201f1c; border-bottom:1px solid #201f1c;">SCOPRI →</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- feature band -->
+      <div style="{{ featureBandStyle }}">
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="width:36px; height:2px; background:#d4b96a;"></div>
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:19px; color:#fff; letter-spacing:1px;">MADE IN ITALY</div>
+          <div style="font-size:13px; color:#a9a79c; line-height:1.6;">Progettazione e produzione interamente italiana, per uno standard tecnico costante.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="width:36px; height:2px; background:#d4b96a;"></div>
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:19px; color:#fff; letter-spacing:1px;">OTTICHE INTERCAMBIABILI</div>
+          <div style="font-size:13px; color:#a9a79c; line-height:1.6;">Sistemi ottici e finiture modulari, adattabili a ogni ambiente progettuale.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="width:36px; height:2px; background:#d4b96a;"></div>
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:19px; color:#fff; letter-spacing:1px;">SU MISURA PER IL CONTRACT</div>
+          <div style="font-size:13px; color:#a9a79c; line-height:1.6;">Supporto tecnico dedicato per progetti residenziali, retail e hospitality.</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ================= PRODUCT PAGE ================= -->
+  <sc-if value="{{ showProduct }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="{{ crumbStyle }}">Home / Suspended Light / <span style="color:#201f1c; font-weight:600;">Wiredot</span></div>
+
+      <div style="{{ productWrapStyle }}">
+        <div style="{{ productImgColStyle }}">
+          <div style="background:#f6f4ee; height:{{ productImgBoxHeight }}px; display:flex; align-items:center; justify-content:center;">
+            <img src="assets/wiredot.png" style="{{ productMainImgStyle }}">
+          </div>
+          <div style="display:flex; gap:12px;">
+            <div style="width:76px; height:76px; background:#f6f4ee; display:flex; align-items:center; justify-content:center;"><img src="assets/wiredot.png" style="width:48px; height:48px; object-fit:cover; border-radius:50%;"></div>
+            <div style="width:76px; height:76px; background:#f6f4ee; display:flex; align-items:center; justify-content:center;"><img src="assets/megadot.png" style="width:48px; height:48px; object-fit:cover; border-radius:50%;"></div>
+            <div style="width:76px; height:76px; background:#f6f4ee; display:flex; align-items:center; justify-content:center;"><img src="assets/superdot.png" style="width:48px; height:48px; object-fit:cover; border-radius:50%;"></div>
+          </div>
+        </div>
+
+        <div style="{{ productInfoColStyle }}">
+          <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#8f8760; background:#e6e1d0; padding:6px 14px; align-self:flex-start;">SUSPENDED LIGHT</div>
+          <div style="{{ productTitleStyle }}">WIREDOT</div>
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:17px; color:#8f8760;">Anello sospeso wireless, ottica regolabile</div>
+          <div style="font-size:14px; color:#6b6a63; line-height:1.7;">Corpo illuminante a sospensione con struttura ad anello e proiettori orientabili indipendenti, pensato per ambienti living e spazi contract di rappresentanza.</div>
+
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:6px;">
+            <div style="font-size:12px; letter-spacing:1px; font-weight:700; color:#201f1c;">FINITURA</div>
+            <div style="display:flex; gap:12px;">
+              <div style="width:28px; height:28px; border-radius:50%; background:#201f1c; border:2px solid #d4b96a;"></div>
+              <div style="width:28px; height:28px; border-radius:50%; background:#e9e6da; border:2px solid transparent;"></div>
+              <div style="width:28px; height:28px; border-radius:50%; background:#8a6f4f; border:2px solid transparent;"></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; margin-top:8px; border-top:1px solid #eae7dc;">
+            <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #eae7dc; font-size:13px;"><span style="color:#8f8d84;">Diametro anello</span><span style="color:#201f1c; font-weight:600;">Su richiesta progetto</span></div>
+            <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #eae7dc; font-size:13px;"><span style="color:#8f8d84;">Sorgente</span><span style="color:#201f1c; font-weight:600;">LED integrato</span></div>
+            <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #eae7dc; font-size:13px;"><span style="color:#8f8d84;">Dimmerabile</span><span style="color:#201f1c; font-weight:600;">Sì</span></div>
+          </div>
+
+          <div style="{{ productBtnWrapStyle }}">
+            <div style="padding:16px 30px; background:#d4b96a; color:#1c1c1a; font-weight:800; font-size:13px; letter-spacing:1.5px; text-align:center;">RICHIEDI SCHEDA TECNICA</div>
+            <div style="padding:16px 30px; border:1px solid #d8d6cd; color:#201f1c; font-weight:600; font-size:13px; letter-spacing:1px; text-align:center;">AGGIUNGI AL PREVENTIVO</div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; margin-top:16px;">
+            <div style="display:flex; justify-content:space-between; padding:15px 0; border-top:1px solid #eae7dc; font-size:14px; font-weight:700; color:#201f1c;">Descrizione <span>+</span></div>
+            <div style="display:flex; justify-content:space-between; padding:15px 0; border-top:1px solid #eae7dc; font-size:14px; font-weight:700; color:#201f1c;">Materiali &amp; Finiture <span>+</span></div>
+            <div style="display:flex; justify-content:space-between; padding:15px 0; border-top:1px solid #eae7dc; border-bottom:1px solid #eae7dc; font-size:14px; font-weight:700; color:#201f1c;">Download &amp; Certificazioni <span>+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="{{ sectionPadStyle }}">
+        <div style="{{ sectionTitleStyle }} margin-bottom:24px;">POTREBBERO INTERESSARTI</div>
+        <div style="{{ gridStyle }}">
+          <div style="background:#f6f4ee; padding:24px; display:flex; flex-direction:column; align-items:center; gap:12px;"><img src="assets/megadot.png" style="width:110px; height:110px; object-fit:cover; border-radius:50%;"><div style="font-family:'Bebas Neue',sans-serif; font-size:19px;">MEGADOT</div></div>
+          <div style="background:#f6f4ee; padding:24px; display:flex; flex-direction:column; align-items:center; gap:12px;"><img src="assets/superdot.png" style="width:110px; height:110px; object-fit:cover; border-radius:50%;"><div style="font-family:'Bebas Neue',sans-serif; font-size:19px;">SUPERDOT</div></div>
+          <div style="background:#f6f4ee; padding:24px; display:flex; flex-direction:column; align-items:center; gap:12px;"><img src="assets/comma.png" style="width:110px; height:110px; object-fit:cover; border-radius:50%;"><div style="font-family:'Bebas Neue',sans-serif; font-size:19px;">COMMA</div></div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- footer -->
+  <div style="{{ footerStyle }}">
+    <div style="{{ footerTopStyle }}">
+      <div style="display:flex; flex-direction:column; gap:10px; max-width:280px;">
+        <span style="font-family:'Bebas Neue',sans-serif; letter-spacing:5px; font-size:19px; color:#fff;">VERDURE</span>
+        <div style="font-size:13px; color:#8a887e; line-height:1.6;">Illuminazione tecnica e design. Catalogo tecnico 2026.</div>
+      </div>
+      <div style="{{ footerLinksStyle }}">
+        <div style="display:flex; flex-direction:column; gap:10px;"><b style="color:#fff;">Prodotti</b><span>Suspended</span><span>Track</span><span>Recessed</span></div>
+        <div style="display:flex; flex-direction:column; gap:10px;"><b style="color:#fff;">Azienda</b><span>Chi siamo</span><span>Progetti</span><span>Contatti</span></div>
+        <div style="display:flex; flex-direction:column; gap:10px;"><b style="color:#fff;">Newsletter</b><div style="border:1px solid #3a3934; padding:10px 14px; font-size:12px; color:#6b6a63;">La tua email</div></div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #2c2b26; padding-top:18px; font-size:12px; color:#6b6a63;">© 2026 Verdure — notonlydesign. Tutti i diritti riservati.</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  state = { page: 'home', width: typeof window !== 'undefined' ? window.innerWidth : 1440, menuOpen: false };
+
+  componentDidMount() {
+    this._onResize = () => this.setState({ width: window.innerWidth });
+    window.addEventListener('resize', this._onResize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+  }
+
+  renderVals() {
+    const w = this.state.width;
+    const isMobile = w < 840;
+    const isDesktop = !isMobile;
+    const page = this.state.page;
+
+    const goHome = () => this.setState({ page: 'home', menuOpen: false });
+    const goProduct = () => this.setState({ page: 'product', menuOpen: false });
+    const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+
+    const pad = isMobile ? '18px 20px' : '0 48px';
+
+    return {
+      isMobile, isDesktop,
+      showHome: page === 'home',
+      showProduct: page === 'product',
+      mobileMenuOpen: isMobile && this.state.menuOpen,
+      goHome, goProduct, toggleMenu,
+
+      headerStyle: `display:flex; align-items:center; justify-content:space-between; padding:${isMobile ? '16px 20px' : '0 48px'}; height:${isMobile ? '68px' : '82px'}; background:#1c1c1a;`,
+
+      heroStyle: `display:flex; flex-direction:${isMobile ? 'column' : 'row'}; background:#232320; overflow:hidden;`,
+      heroTextWrapStyle: `width:${isMobile ? '100%' : '52%'}; display:flex; flex-direction:column; justify-content:center; padding:${isMobile ? '36px 20px' : '0 56px'}; gap:${isMobile ? '18px' : '26px'};`,
+      heroTitleStyle: `font-family:'Bebas Neue',sans-serif; font-size:${isMobile ? '40px' : '72px'}; line-height:0.95; color:#fff; letter-spacing:1px;`,
+      heroCopyStyle: `font-size:${isMobile ? '14px' : '16px'}; line-height:1.6; color:#a9a79c; max-width:440px;`,
+      heroBtnWrapStyle: `display:flex; flex-direction:${isMobile ? 'column' : 'row'}; gap:14px; margin-top:8px;`,
+      heroImgWrapStyle: `width:${isMobile ? '100%' : '48%'}; height:${isMobile ? '260px' : 'auto'}; position:relative;`,
+
+      sectionPadStyle: `padding:${isMobile ? '48px 20px' : '72px 48px'}; display:flex; flex-direction:column; gap:${isMobile ? '24px' : '32px'};`,
+      sectionHeadStyle: `display:flex; flex-direction:${isMobile ? 'column' : 'row'}; align-items:${isMobile ? 'flex-start' : 'flex-end'}; gap:${isMobile ? '12px' : '0'}; justify-content:space-between;`,
+      sectionTitleStyle: `font-family:'Bebas Neue',sans-serif; font-size:${isMobile ? '32px' : '42px'}; color:#201f1c; letter-spacing:1px;`,
+      gridStyle: `display:grid; grid-template-columns:repeat(${isMobile ? 1 : 3},1fr); gap:${isMobile ? '20px' : '26px'};`,
+
+      featureBandStyle: `background:#1c1c1a; padding:${isMobile ? '44px 20px' : '60px 48px'}; display:grid; grid-template-columns:repeat(${isMobile ? 1 : 3},1fr); gap:${isMobile ? '28px' : '36px'};`,
+
+      crumbStyle: `padding:${isMobile ? '18px 20px 0' : '24px 48px 0'}; font-size:12px; color:#8f8d84; letter-spacing:0.5px;`,
+      productWrapStyle: `display:flex; flex-direction:${isMobile ? 'column' : 'row'}; gap:${isMobile ? '24px' : '52px'}; padding:${isMobile ? '20px 20px 48px' : '28px 48px 68px'};`,
+      productImgColStyle: `width:${isMobile ? '100%' : '46%'}; display:flex; flex-direction:column; gap:14px;`,
+      productImgBoxHeight: isMobile ? 300 : 500,
+      productMainImgStyle: `width:${isMobile ? '220px' : '320px'}; height:${isMobile ? '220px' : '320px'}; object-fit:cover; border-radius:50%;`,
+      productInfoColStyle: `width:${isMobile ? '100%' : '54%'}; display:flex; flex-direction:column; gap:18px;`,
+      productTitleStyle: `font-family:'Bebas Neue',sans-serif; font-size:${isMobile ? '44px' : '58px'}; letter-spacing:1px; color:#201f1c; line-height:0.95;`,
+      productBtnWrapStyle: `display:flex; flex-direction:${isMobile ? 'column' : 'row'}; gap:14px; margin-top:10px;`,
+
+      footerStyle: `background:#141412; padding:${isMobile ? '40px 20px 24px' : '52px 48px 26px'}; display:flex; flex-direction:column; gap:${isMobile ? '28px' : '36px'};`,
+      footerTopStyle: `display:flex; flex-direction:${isMobile ? 'column' : 'row'}; justify-content:space-between; gap:${isMobile ? '24px' : '36px'};`,
+      footerLinksStyle: `display:flex; flex-wrap:wrap; gap:${isMobile ? '32px' : '70px'}; font-size:13px; color:#a9a79c;`,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
