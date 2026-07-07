@@ -3,19 +3,180 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verdure Mockup</title>
+  <title>Verdure Mockup | Ralweb</title>
   <style>
-    body { font-family: Arial, sans-serif; display: grid; place-items: center; min-height: 100vh; margin: 0; background: #f7f7f2; }
-    main { text-align: center; padding: 40px; }
-    h1 { margin-bottom: 24px; }
-    a { display: block; margin: 16px; padding: 18px 28px; background: #111; color: white; text-decoration: none; border-radius: 12px; font-size: 20px; }
+    :root {
+      --bg: #070707;
+      --text: #f4f4f0;
+      --muted: #9b9b92;
+      --line: rgba(255,255,255,.14);
+      --accent: #d6ff3f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top right, rgba(214,255,63,.18), transparent 30%), var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 80px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 24px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .tag {
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 9vw, 120px);
+      line-height: .9;
+      letter-spacing: -5px;
+      margin: 0 0 24px;
+      max-width: 900px;
+    }
+
+    .subtitle {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.5;
+      margin-bottom: 56px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 32px;
+      min-height: 220px;
+      background: rgba(255,255,255,.04);
+      transition: .25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      background: rgba(214,255,63,.08);
+    }
+
+    .number {
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .card h2 {
+      font-size: 34px;
+      line-height: 1;
+      margin: 0 0 16px;
+      letter-spacing: -1px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .arrow {
+      margin-top: 36px;
+      font-size: 28px;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 56px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    @media (max-width: 760px) {
+      .top { margin-bottom: 48px; }
+      .cards { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -3px; }
+    }
   </style>
 </head>
 <body>
   <main>
+    <div class="top">
+      <div class="logo">Ralweb</div>
+      <div class="tag">Surfin' code</div>
+    </div>
+
     <h1>Verdure Mockup</h1>
-    <a href="/be-yours.html">Mockup Ralweb - Proposta 1</a>
-    <a href="/hyper.html">Mockup Ralweb - Proposta 2</a>
+
+    <p class="subtitle">
+      Due proposte grafiche sviluppate da Ralweb per valutare stile, struttura e direzione visiva del progetto.
+    </p>
+
+    <section class="cards">
+      <a class="card" href="./be-yours.html">
+        <div>
+          <div class="number">Proposta 01</div>
+          <h2>Mockup Ralweb<br>Tema Be Yours</h2>
+          <p>Una proposta più editoriale, morbida e distintiva.</p>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="card" href="./hyper.html">
+        <div>
+          <div class="number">Proposta 02</div>
+          <h2>Mockup Ralweb<br>Tema Hyper</h2>
+          <p>Una proposta più dinamica, moderna e digitale.</p>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+    </section>
+
+    <footer>
+      Web Design, Software Development & Digital Solutions — ralweb.it
+    </footer>
   </main>
 </body>
 </html>
